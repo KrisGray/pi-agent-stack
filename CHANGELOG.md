@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased]
+
+### Features
+
+* **interview:** hardened intake templates and risk triage flow with deterministic
+  Q4 risk-seed cues, stricter one-question discipline, clarified budget and
+  routing rules, and stack-neutral pack wording ([b35b288](https://github.com/KrisGray/pi-agent-stack/commit/b35b28883470e07a69d000183039c3007af4682a))
+
 ## [1.0.2](https://github.com/KrisGray/pi-agent-stack/compare/v1.0.1...v1.0.2) (2026-09-10)
 
 ### Bug Fixes
