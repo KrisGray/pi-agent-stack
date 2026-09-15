@@ -14,11 +14,12 @@ retrospective.
 
 1. Is this run once, or does it become something that runs again? [default: once]
 
-2. Who runs it, and from where — your machine, a server, a scheduler? [default: you, on
-   your machine, by hand]
-   *(If Q1 said "once" and Q2 names a scheduler or another person, those answers
-   contradict each other. Take your one follow-up here — it is the highest-value
-   follow-up in this pack.)*
+2. Who runs it? [default: you]
+   - → *follow-up:* where does it run — your machine, a server, or a scheduler?
+     [default: your machine, by hand]
+   *(If Q1 said "once" and this follow-up names a scheduler or another person, those
+   answers contradict each other. Take your one follow-up here — it is the
+   highest-value follow-up in this pack.)*
 
 3. Does it change anything that can't be undone — writes, deletes, sends, spends?
    [default: read-only]
@@ -28,9 +29,9 @@ retrospective.
 
 ## Notes for the PRD
 
-- A script that is genuinely run once, by one person, read-only, does not need a PRD.
-  Say so and offer to skip straight to building it. Recognising that is a better outcome
-  than a well-formed document nobody needed.
+- A script that is genuinely run once, by one person, read-only, is usually a
+  **single-task scope**. Keep the PRD and feature graph minimal (one requirement,
+  explicit non-goals) instead of expanding it into a platform.
 - Anything that answers "repeatedly" to Q1 or names a scheduler in Q2 should be routed to
   a fuller pack instead. Use the boundary tests in `PACKS.md`: another person runs it →
   `cli-tool`; a scheduler or queue starts it → `batch-worker`; it moves data on a

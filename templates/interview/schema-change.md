@@ -16,8 +16,8 @@ skip anything already settled there.
 
 1. Roughly how many rows are in the tables you're changing?
    [default: small enough that a brief lock doesn't matter]
-   - → *if large enough to matter:* how much write-blocking is acceptable, and is there a
-     window where it costs less?
+   - → *if large enough to matter:* how much write-blocking is acceptable?
+     - → *follow-up:* is there a window where that cost is lower?
 
 2. During the deploy, does the old application code have to keep working against the new
    schema? [default: yes — deploys aren't atomic, so assume both shapes are live at once]
@@ -34,7 +34,8 @@ skip anything already settled there.
 5. Who else reads these tables directly — replicas, reporting, ETL, another service?
    [default: this application only]
    *(Core Q11 asks what this depends on. This is the inverse: what depends on this.)*
-   - → *if any:* do they touch the columns you're changing, and who tells them?
+   - → *if any:* do they touch the columns you're changing?
+     - → *follow-up:* who tells them?
 
 ## Notes for the PRD
 
@@ -45,5 +46,5 @@ skip anything already settled there.
 - A forward-only answer to Q4 is a stated constraint, not an assumption. It changes what
   "done and trusted" means, so it belongs in the PRD body rather than the assumptions
   table.
-- Any Q5 consumer outside this repo is a PRD risk under the same rule as core Q11 —
+- Any Q5 consumer outside this repo is a PRD risk under the same rule as optional Q11 —
   record it whatever the answer.

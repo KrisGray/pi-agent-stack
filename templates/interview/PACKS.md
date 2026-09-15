@@ -3,10 +3,10 @@
 The routing vocabulary. Do not route to a pack that is not listed here and has no file in
 this directory.
 
-**Ownership.** This file owns the pack table and the boundary tests, and nothing else.
-`interview.md` owns the questions, the budget and the routing procedure;
-`AI-INSTRUCTIONS.md` owns the playback format. Where this file and `interview.md` appear
-to disagree about procedure, `interview.md` wins.
+**Ownership.** This file owns the pack table, boundary tests, and Q4 risk-seed cues,
+and nothing else. `interview.md` owns the questions, the budget and the routing
+procedure; `AI-INSTRUCTIONS.md` owns the playback format. Where this file and
+`interview.md` appear to disagree about procedure, `interview.md` wins.
 
 Each pack file owns its own `Compose with:` line. The *Composes with* column below mirrors
 those lines — if the two ever drift, the pack file is right and this table is stale.
@@ -52,7 +52,34 @@ the test rather than guessing, and state the result as part of the routing annou
 
 A wrong answer to one of these costs three to five questions, which is why they are worth
 one short follow-up. If the user's answer straddles a boundary, take the pack that covers
-the part they are least sure about — core Q4 usually points at it.
+the side the user knows less well — hesitation on the boundary test is the signal, not
+some later question. These clarifications are follow-ups to core Q1 and count toward the
+same 12-question budget.
+
+## Q4 risk-seed cues by pack
+
+Use these cues when compiling core Q4's difficulty shortlist. Fill in order: one cue per
+loaded pack first, then charter one-way-door cues, then inventory/drift and dependency
+cues. Cues in each row are priority-ordered; when a pack contributes one slot, take the
+first cue.
+
+| Pack | Default risk-seed cues |
+|---|---|
+| `script` | Re-run safety unclear; one-off quietly becoming shared/scheduled infrastructure |
+| `cli-tool` | Distribution/runtime drift; compatibility promise stronger than planned |
+| `data-pipeline` | Source format changes without notice; dedupe identity/idempotency gaps |
+| `batch-worker` | Delivery semantics and idempotency mismatch; retries causing hidden ops load |
+| `orm-model` | Source-of-truth inversion; key/cascade integrity edge-cases; outside-ORM consumers |
+| `schema-change` | Lock window too small for row volume; dual-shape deploy hazards; backfill validity |
+| `rest-api` | Existing clients break on change; unversioned additive-only constraint; write retries duplicate effects |
+| `website` | URL contract breakage; editor workflow mismatch; cache invalidation blind spots |
+| `web-app` | Role/journey ambiguity; auth/session mismatch; state consistency surprises |
+| `auth-permissions` | Weak tenant/data isolation; audit obligations wider than assumed |
+| `analytics-dashboard` | Freshness expectation mismatch; heavy-query performance or cost cliffs |
+| `infra-change` | IaC drift/manual changes; rollback path weaker than expected; observability gaps |
+| `llm-integration` | Sensitive context leakage; latency/fallback policy gaps; behaviour unobservable |
+| `agent-framework` | Guardrail boundaries too weak; tool-discovery drift; state persistence ambiguity |
+| `evaluation-harness` | Metrics not decision-useful; reproducibility gaps; dataset licensing/sensitivity risk |
 
 ## Routing
 

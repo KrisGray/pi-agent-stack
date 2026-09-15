@@ -121,6 +121,8 @@ The model catalog lives in `~/.pi/agent/models.json` next to live API keys, and 
 
 Project intake is a **pack system**: a core bank of five questions plus archetype packs (`orm-model`, `data-pipeline`, `web-app`, `cli-tool`, …), routed from the first answer, at most two packs composing, five pack questions max. `AI-INSTRUCTIONS.md` owns the intake procedure and playback format; `PACKS.md` owns the boundary tests that separate close archetypes (does a user log in? does the model choose what to call next?). `/hire-pm` seeds the charter with a route *hint* — intake verifies it, never assumes it.
 
+Risk intake is split by domain: the pm compiles the difficulty candidates from the Phase 0 inventory and the charter's oracle rows — difficulty is the expert's call, not the stakeholder's — and asks the user only for consequence and appetite: descope, spend, or delay.
+
 ## Layout
 
 ```text

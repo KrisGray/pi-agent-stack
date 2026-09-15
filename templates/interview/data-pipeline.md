@@ -12,20 +12,21 @@ run. Ordered by cost-of-missing; drop from the bottom.
 
 2. How does the source tell you its format changed? [default: it doesn't — you find out
    when parsing breaks]
-   *(Record as a PRD risk whatever the answer, under core Q11's rule.)*
+   *(Record as a PRD risk whatever the answer, under optional Q11's rule.)*
    - → *if there is notice:* how much, and through what channel?
 
 3. What identifies a record as one you've already seen? [default: the source provides a
    stable id]
-   - → *if no stable id:* what combination of fields is unique enough to dedupe on, and
-     is it stable if the source re-issues a record?
+   - → *if no stable id:* what combination of fields is unique enough to dedupe on?
+     - → *follow-up:* is that key stable if the source re-issues a record?
 
 4. What triggers a run — a schedule, an event, or you? [default: scheduled]
    - → *if scheduled:* what happens if a run overruns into the next one?
 
 5. Is there history to load once, separately from the ongoing runs? [default: no backfill
    — start from now]
-   - → *if yes:* roughly how much, and does it go through the same path as a normal run?
+   - → *if yes:* roughly how much?
+   - → *follow-up:* does it go through the same path as a normal run?
 
 ## Notes for the PRD
 
@@ -33,6 +34,6 @@ run. Ordered by cost-of-missing; drop from the bottom.
   pipeline has no testable success condition — say so in the playback rather than
   writing R1 as "ingests the data".
 - Rate limits, pagination and auth on the source belong in the PRD dependency section via
-  core Q11. Don't spend a pack question on them unless the user raises one.
+  optional Q11. Don't spend a pack question on them unless the user raises one.
 - Q5 answers involving volume are a scope finding: a backfill is frequently a second
   deliverable rather than part of the first slice.

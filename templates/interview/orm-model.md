@@ -10,6 +10,8 @@ Assumes the core bank has run. Ordered by cost-of-missing; drop from the bottom.
 1. Does this change the database shape, or only the mapping onto an existing one?
    [default: mapping only]
    - → *if the shape changes:* load `schema-change` and take its top two.
+   - → *if two packs are already loaded:* swap out the less-relevant pack for
+     `schema-change`, or split scope per core Q2.
 
 2. Which is the source of truth — the models, or the database? [default: models, with
    migrations generated from them]
@@ -19,8 +21,8 @@ Assumes the core bank has run. Ordered by cost-of-missing; drop from the bottom.
 3. Who owns the transaction boundary on the code paths this touches — where does the
    commit happen? [default: unchanged from the existing convention]
 
-4. Are new relationships involved, and what should happen to related rows when a parent
-   is deleted? [default: no new relationships]
+4. Are new relationships involved? [default: no new relationships]
+   - → *if any:* what should happen to related rows when a parent is deleted?
    - → *if any:* is the cascade enforced by the database, the ORM, or neither?
 
 5. Does anything query these tables outside the ORM — raw SQL, reporting, another

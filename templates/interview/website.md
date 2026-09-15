@@ -6,8 +6,8 @@ Building or maintaining a public-facing site. Assumes the core bank has run. Ord
 cost-of-missing; drop from the bottom.
 
 1. Do any existing URLs change or disappear? [default: no — URLs are a public contract]
-   - → *if they do:* are there inbound links or search rankings that matter, and do the
-     old paths need to keep resolving?
+   - → *if they do:* are there inbound links or search rankings that matter?
+     - → *follow-up:* do the old paths need to keep resolving?
 
 2. Who edits the content after this ships — you, or someone who won't touch the repo?
    [default: you, in the repo]
@@ -16,11 +16,12 @@ cost-of-missing; drop from the bottom.
 
 3. Is there caching or a CDN between visitors and the origin? [default: yes — assume
    something serves stale content until proven otherwise]
-   - → *if yes:* what invalidates it, and can you trigger that on deploy?
+   - → *if yes:* what invalidates it?
+   - → *follow-up:* can you trigger that on deploy?
 
 4. What does the site collect from visitors — forms, accounts, analytics, payments?
    [default: nothing]
-   - → *if anything:* carry it back into core Q12 rather than answering both.
+   - → *if anything:* carry it back into optional Q12 rather than answering both.
 
 5. What browsers and devices have to work? [default: current evergreen browsers,
    mobile included]

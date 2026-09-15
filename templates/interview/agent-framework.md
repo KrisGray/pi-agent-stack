@@ -17,15 +17,17 @@ Assumes the core bank has run. Ordered by cost-of-missing; drop from the bottom.
 2. How does the agent represent and persist state — conversations, task graphs, memory,
    logs? [default: transient in-process state; logs to disk or a simple database]
 
-3. What safety or guardrail rules must the agent follow — what it must never do without
-   human approval, and what counts as an error? [default: human in the loop for anything
-   destructive or expensive]
+3. What safety or guardrail rules must the agent follow?
+   [default: human in the loop for anything destructive or expensive]
+   - → *follow-up:* what must it never do without human approval?
+   - → *follow-up:* what counts as a guardrail failure (an error state)?
 
 4. Through what surfaces is the agent used — CLI, REST API, editor plug-ins, web UI?
    [default: CLI and REST API]
 
-5. How does the agent discover and call tools — static config, dynamic registry, MCP
-   servers, or something else? [default: static config checked into the repo]
+5. How does the agent discover and call tools — static config, dynamic registry,
+   an open tool protocol (such as MCP), or something else?
+   [default: static config checked into the repo]
 
 ## Notes for the PRD
 
@@ -33,7 +35,7 @@ Assumes the core bank has run. Ordered by cost-of-missing; drop from the bottom.
   without human approval are risk findings, not details. Record them in the assumptions
   table and reflect them in "done and trusted".
 - Any external surfaces named in Q4 (IDEs, ticketing systems, CI/CD, cloud consoles)
-  are dependencies under core Q11; treat them as such.
+  are dependencies under optional Q11; treat them as such.
 - A dynamic or remote tool discovery answer to Q5 implies additional failure modes
   (registry unavailability, stale tool metadata); log them explicitly in the risk
   section rather than treating them as implementation detail.

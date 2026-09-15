@@ -3,22 +3,24 @@
 Compose with: `schema-change` when database shape changes, and `batch-worker` when
 jobs or workers are added or altered.
 
-Changes to infrastructure-as-code, environments, or cloud services — Terraform, Docker,
-Google Cloud Run, Compute Engine, Cloud SQL, networking.
+Changes to infrastructure-as-code, environments, or cloud services — IaC tooling,
+containers, serverless/VM runtimes, databases, and networking.
 
 Assumes the core bank has run. Ordered by cost-of-missing; drop from the bottom.
 
-1. Which environments are affected — dev, staging, production, others — and what is the
-   blast radius if something goes wrong? [default: dev and staging only]
+1. Which environments are affected — dev, staging, production, others?
+   [default: dev and staging only]
+   - → *follow-up:* if something goes wrong there, what is the blast radius?
 
-2. Is Terraform or another IaC tool already the source of truth, and must that remain
-   the case after this change? [default: Terraform is source of truth]
+2. Is IaC already the source of truth? [default: yes]
+   - → *follow-up:* must that remain the case after this change?
+     [default: yes — keep the existing IaC tool as source of truth]
 
-3. What runtime surfaces are involved — Docker images, Cloud Run services, Compute Engine
-   instances, Kubernetes clusters? [default: Docker images on Cloud Run]
+3. What runtime surfaces are involved — container runtime, VMs, Kubernetes,
+   serverless? [default: existing runtime platform]
 
-4. What are the rollback expectations if a deploy breaks — git revert, Terraform state
-   manipulation, manual changes? [default: forward-only once data has changed]
+4. What are the rollback expectations if a deploy breaks — version-control revert,
+   IaC state operations, manual changes? [default: forward-only once data has changed]
 
 5. How are infrastructure health and changes currently observed — logging, metrics,
    alerts, dashboards? [default: basic metrics and logs; limited alerting]

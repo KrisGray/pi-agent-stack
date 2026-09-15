@@ -13,7 +13,9 @@ Assumes the core bank has run. Ordered by cost-of-missing; drop from the bottom.
 2. How fresh must the data be — real-time, near-real-time, daily, or less frequent?
    [default: daily]
 
-3. Who can see which data — are metrics global, per-user, per-tenant? [default: global]
+3. Who can see which data — are metrics global, per-user, per-tenant?
+   [default: global]
+   *(Skip if composing with `auth-permissions` and partitioning is already settled.)*
 
 4. How heavy can queries be — are long-running queries acceptable, and is there a
    performance budget? [default: reasonable performance; no explicit budget]

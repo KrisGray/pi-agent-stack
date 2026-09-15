@@ -8,8 +8,10 @@ binaries.
 
 Assumes the core bank has run. Ordered by cost-of-missing; drop from the bottom.
 
-1. Who uses the CLI and how often — you, a team, external users? [default: you and your
-   team]
+1. Who uses the CLI? [default: you and your team]
+   - → *follow-up:* how often is it used? [default: regular use]
+   - → *follow-up:* when it fails, how disruptive is that?
+     [default: short failures are tolerable]
 
 2. How is it distributed — checked into the repo, packaged (pip, npm, homebrew), or
    bundled as a container image? [default: script in the repo]
@@ -30,4 +32,4 @@ Assumes the core bank has run. Ordered by cost-of-missing; drop from the bottom.
 - Versioning and compatibility in Q4 affect how aggressively you can refactor; record
   any guarantees as explicit requirements.
 - Config and state named in Q5 should be checked against sensitivity and retention rules
-  under core Q12.
+  under optional Q12.

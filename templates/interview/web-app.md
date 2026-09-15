@@ -3,13 +3,13 @@
 Compose with: `auth-permissions` for roles and data isolation, and `schema-change` for
 apps backed by a database whose shape changes.
 
-Authenticated, multi-user web application — Angular front-end, NestJS back-end, shared
-state via NgRx or similar.
+Authenticated, multi-user web application — browser UI plus server-side services,
+with shared state where needed.
 
 Assumes the core bank has run. Ordered by cost-of-missing; drop from the bottom.
 
-1. Who uses the app and what main roles exist — admin, normal users, read-only, etc.?
-   [default: a small set of roles with clear boundaries]
+1. Who uses the app? [default: one primary user group plus one admin group]
+   - → *follow-up:* what role boundaries must hold between those groups?
 
 2. What are the core user journeys — list two or three flows that must work end-to-end?
    [default: one primary journey and one secondary]
@@ -20,8 +20,9 @@ Assumes the core bank has run. Ordered by cost-of-missing; drop from the bottom.
 4. What expectations exist around responsiveness — real-time updates, offline support,
    mobile behaviour? [default: reasonably responsive SPA; no offline]
 
-5. How is front-end state managed — NgRx or similar, local storage, server-side state?
-   [default: NgRx with server as source of truth]
+5. How is application state handled across screens — server-driven, local state,
+   shared client store, or a mix? [default: existing project convention, with server
+   as source of truth]
 
 ## Notes for the PRD
 

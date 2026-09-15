@@ -35,6 +35,14 @@ R2. ...
 ## Constraints
 <Runtime, deployment target, compliance, performance budgets, hard deadlines.>
 
+## Risks
+| # | Risk | Source | If it bites, we… |
+|---|---|---|---|
+| 1 | … | difficulty scan / inventory flag / user history | descope / spend / delay |
+
+<Seeded from the interview's two-halved risk question. Items nobody can settle at
+intake move to Open questions and get spiked in Phase 4.>
+
 ## Assumptions
 | # | Assumption | Why | Invalidated if |
 |---|---|---|---|

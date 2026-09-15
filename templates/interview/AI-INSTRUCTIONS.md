@@ -15,8 +15,10 @@ places, so read them from source:
 ## Before you start
 
 1. Read `interview.md` end to end. It is the contract.
-2. Read `AGENTS.md`, the charter, `docs/prd.md` and the repo. Anything they answer is a
-   question you do not get to ask.
+2. Read `AGENTS.md`, the charter, `docs/prd.md` and the repo — and the Phase 0
+   inventory, if one exists: it answers more than the user can, and its flagged
+   oddities feed core Q4's difficulty list. Anything these answer is a question you
+   do not get to ask.
 3. Read `interview/PACKS.md` for the routing vocabulary. Do not route to a pack with no
    file in `interview/`.
 
@@ -34,7 +36,11 @@ change headings or list styles.
 - `## In scope` — numbered; these become R1…Rn.
 - `## Not in scope` — bulleted; these become the non-goals section.
 - `## Assumptions` — table; every deferred answer with what would invalidate it.
-- `## Biggest risk` — one line, drawn from core Q4.
+- `## Biggest risk` — one line, drawn from both halves of core Q4: expert-judged
+  difficulty × user-stated consequence.
+
+Core Q10 ("done and trusted") has no dedicated playback heading; carry its answer into
+PRD constraints, risks, and acceptance-gate wording.
 
 Every "you decide" / "skip" answer must appear in the Assumptions table. An answer that
 was deferred and then silently omitted reads as a settled decision, which is the failure
@@ -64,7 +70,8 @@ that limitation.
 | ...       | ...                    |
 
 ## Biggest risk
-One line describing the most uncertain or difficult part.
+One line: the top risk as expert-judged difficulty × user-stated consequence, and the
+agreed response (descope / spend / delay).
 ```
 
 Close with one question and stop: *"Is that right? Correct anything before I write the
@@ -77,15 +84,15 @@ PRD."*
 Routing announcement:
 
 > "Sounds like a data pipeline that also changes the schema — I'll ask about failure
-> semantics and record identity, then row counts and backfill."
+> semantics and record identity, then row counts and dual-shape deploy compatibility."
 
 Packs loaded: `data-pipeline` (three questions from the top) plus `schema-change` (two).
 That is the five-question cap; the remaining budget goes to the core and optional banks.
 
 ```md
 ## Problem
-Partner CSV exports cannot be ingested into Cloud SQL without duplicate rows or silent
-parse failures, and the manual repair work costs several hours a week.
+Partner CSV exports cannot be ingested into the operational database without duplicate
+rows or silent parse failures, and the manual repair work costs several hours a week.
 
 ## Users
 - Primary: the data engineering team

@@ -14,8 +14,9 @@ Assumes the core bank has run. Ordered by cost-of-missing; drop from the bottom.
 2. What delivery semantics are required — at-most-once, at-least-once, or best-effort?
    [default: at-least-once; assume retries are allowed]
 
-3. How many workers run and at what concurrency, and can they scale up or down? [default:
-   a single worker at fixed concurrency]
+3. How many workers run? [default: a single worker]
+   - → *follow-up:* what concurrency does each run at? [default: fixed]
+   - → *if it varies:* can worker count scale up or down automatically?
 
 4. What happens when work fails — retries, dead-letter queues, manual intervention?
    [default: a small number of retries, then log and drop]
