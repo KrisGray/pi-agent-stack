@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.3.1](https://github.com/KrisGray/pi-agent-stack/compare/v1.3.0...v1.3.1) (2026-09-17)
+
+### Bug Fixes
+
+* **prompts:** rename review gate template to /gate — /review is taken by agent-stuff extension ([9930bd3](https://github.com/KrisGray/pi-agent-stack/commit/9930bd3f03cfd9a9e5e33db67c112d4c262ec077))
+
 ## [1.3.0](https://github.com/KrisGray/pi-agent-stack/compare/v1.2.1...v1.3.0) (2026-09-17)
 
 ### Features
