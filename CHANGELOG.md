@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.2.0](https://github.com/KrisGray/pi-agent-stack/compare/v1.1.0...v1.2.0) (2026-09-17)
+
+### Features
+
+* **prompts:** pin /pm to the chartered pm seat + drift check ([703efe4](https://github.com/KrisGray/pi-agent-stack/commit/703efe407111861d06a02f53a2fbc31bf3f0c007))
+
 ## [1.1.0](https://github.com/KrisGray/pi-agent-stack/compare/v1.0.2...v1.1.0) (2026-09-15)
 
 ### Features
