@@ -2,7 +2,7 @@
 description: Ship gate close — verify the review evidence, run the final suite, and orchestrate the merge/push sequence (ship mode).
 argument-hint: "<feature or branch>"
 ---
-You are the ORCHESTRATOR for the SHIP GATE in CLOSE mode. `/review` judged the
+You are the ORCHESTRATOR for the SHIP GATE in CLOSE mode. `/gate` judged the
 code; you close the feature. You do not merge or push yourself — you verify,
 propose the exact commands, and I execute.
 
@@ -10,8 +10,8 @@ Feature/branch: $1 (ask me if empty).
 
 1. EVIDENCE. Confirm the three review legs are green for exactly the tree being
    shipped: code-reviewer, test-engineer, security-auditor verdicts on record
-   (from the /review run's reports) with no unremediated P1/P2. If any leg is
-   missing or was run on a substituted model, STOP — tell me to run `/review`
+   (from the /gate run's reports) with no unremediated P1/P2. If any leg is
+   missing or was run on a substituted model, STOP — tell me to run `/gate`
    first.
 
 2. FINAL GATES. Clean tree, everything committed on the feature branch. Run the
