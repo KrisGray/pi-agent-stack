@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.0](https://github.com/KrisGray/pi-agent-stack/compare/v1.0.2...v1.1.0) (2026-09-15)
+
+### Features
+
+* **interview:** harden intake prompts and risk triage flow ([59fd037](https://github.com/KrisGray/pi-agent-stack/commit/59fd0379624d3a82efaf26f2de8c13c65ff373ac))
+
 ## [Unreleased]
 
 ### Features
