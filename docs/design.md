@@ -6,7 +6,7 @@ Why this package is shaped the way it is.
 
 The original pm persona (`nomgen-orm/.pi/agents/pm.md`) was simultaneously two things:
 
-1. A **role contract** — phases, gates, recovery branches, anti-rationalization — that is identical for any project run under strict TDD with the `/spec → /task → /review → /ship` pipeline.
+1. A **role contract** — phases, gates, recovery branches, anti-rationalization — that is identical for any project run under strict TDD with the `/spec → /task → /gate → /ship` pipeline.
 2. A **project charter** — nomgen's ground truth, drift test, F0, delegation rows, interview bank — that is meaningless outside that repo.
 
 Packaging it required separating them. `agents/pm.md` in this package is the kernel: the role contract, identical everywhere, referencing `.ai/pm/charter.md` for every project-specific binding. The charter is a small per-project file that may bind tighter but never weaker; where they conflict, the kernel wins.
@@ -97,7 +97,7 @@ The user's requirement: `/hire-pm` reads the models actually available to this p
 
 The kernel assumes a global `~/.pi/agent/AGENTS.md` TDD contract above it ("You are a layer on top of the global TDD contract"). Consumers without one lose the RED/GREEN/REFACTOR spine the whole stack leans on. **v0.2 ships the spine** as `templates/AGENTS.md`, and closes the wider coherence gap in the same move: `/spec` and `/task` now ship in `.pi/prompts/`, so the kernel's contract surface (planning-mode specs from `.ai/templates/spec.md`, claim labels, runnable Verify lines, `traces_to` IDs, the stop-before-commit task discipline) comes from the same package as the kernel that reviews it. Previously the shipped-world `/spec` was the generic skill-delegating one, and the kernel's Phase 6 checklist mismatched what it produced.
 
-Provenance was verified before rolling in: the user's `/spec` and `/task` are original implementations of their own AGENTS.md contract — no version of `@chankov/agent-skills` (0.1.0 → 1.0.8) shipped a task prompt, and every shipped spec prompt is the unrelated generic one; upstream addyosmani/agent-skills ships neither. THIRD-PARTY-NOTICES therefore still covers the eight persona files only. `/build`, `/test`, `/review`, `/ship` and the skills deliberately stay in the pipeline package — the kernel emits their command lines and reads results; owning them would collapse the layering and create a living fork of work upstream has already moved to agent-fleet.
+Provenance was verified before rolling in: the user's `/spec` and `/task` are original implementations of their own AGENTS.md contract — no version of `@chankov/agent-skills` (0.1.0 → 1.0.8) shipped a task prompt, and every shipped spec prompt is the unrelated generic one; upstream addyosmani/agent-skills ships neither. THIRD-PARTY-NOTICES therefore still covers the eight persona files only. The skills deliberately stay in the pipeline package — the kernel emits command lines and reads results, never runs them. The gate commands ship with the stack: `/gate` (three-persona review fan-out) and `/ship` (close), added 17 Sep 2026 after the planned `/review` name proved owned by an installed extension (mitsuhiko/agent-stuff — extension-registered commands outrank prompt templates, so a template named `/review` can never fire). `/build` and `/test` never resolved as commands on the reference machine; the kernel does not depend on them.
 
 ## Migration path for nomgen-orm
 

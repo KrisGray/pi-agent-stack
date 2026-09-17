@@ -20,7 +20,7 @@ A chartered project-manager agent plus the specialist team it delegates to, pack
  │                       domain rows, model policy               │
  │                       (binds tighter, never weaker)           │
  ├────────────────────────────────────────────────────────────────┤
- │  pipeline             /spec → /task → /review → /ship         │
+ │  pipeline             /spec → /task → /gate → /ship           │
  │                       (pi-subagents runtime + pipeline pkg)   │
  └────────────────────────────────────────────────────────────────┘
    precedence: contract > kernel > charter > conversation
@@ -40,15 +40,15 @@ Generality in the process, specificity in the charter. `examples/nomgen/` is the
 | `oracle` | Adversarial second opinion on expensive-to-reverse decisions | pm |
 | `plan-reviewer` | Critiques the pm's own PRD and feature graphs | pm |
 | `worker` | One spec task, strict TDD cycle, stops before committing | pm proposes, you run |
-| `code-reviewer` | Ship gate: correctness | `/review`, `/ship` |
-| `test-engineer` | Ship gate: tests and coverage | `/review`, `/ship` |
-| `security-auditor` | Ship gate: security | `/review`, `/ship` |
+| `code-reviewer` | Ship gate: correctness | `/gate`, `/ship` |
+| `test-engineer` | Ship gate: tests and coverage | `/gate`, `/ship` |
+| `security-auditor` | Ship gate: security | `/gate`, `/ship` |
 | `builder`, `planner`, `documenter` | Execution-side utilities | you, ad hoc |
 
-The pm sits **above** a `/spec → /task → /review → /ship` pipeline and never runs those commands itself — it decides what runs, reads the results, and gates. The pipeline is split across packages, deliberately:
+The pm sits **above** a `/spec → /task → /gate → /ship` pipeline and never runs those commands itself — it decides what runs, reads the results, and gates. The pipeline commands ship with this package, deliberately:
 
 - **`/spec` and `/task` ship with pi-agent-stack** — they are the kernel's contract surface. `/spec` writes specs in planning mode from `.ai/templates/spec.md` (claim labels, runnable Verify lines, `traces_to` requirement IDs — exactly what the kernel's Phase 6 review checks); `/task` runs one task through a strict TDD cycle and stops before committing. If you also run [@chankov/agent-skills](https://github.com/chankov/agent-skills) or [agent-fleet](https://github.com/chankov/agent-fleet), this package's `/spec` shadows their generic one — that is the intent.
-- **`/build`, `/test`, `/review`, `/ship`** come from the pipeline package — the kernel treats them as pluggable and only emits their command lines.
+- **`/gate` and `/ship` ship here too** (`.pi/prompts/`) — the ship-gate fan-out (`code-reviewer` + `test-engineer` + `security-auditor`) runs through `/gate`; `/ship` closes. Names outside the stack are machine-dependent: `/review` on the reference machine is mitsuhiko/agent-stuff's inline reviewer (runs on the session model — ad hoc only, unfit for the chartered gate), and `/build`/`/test` do not resolve as commands. The kernel treats every pipeline command as pluggable and only emits its command line.
 - The **global TDD contract** (`~/.pi/agent/AGENTS.md`) the kernel assumes is shipped as an installable default: `templates/AGENTS.md`. `/hire-pm` checks for it and offers to seed it.
 
 ## Install
@@ -65,7 +65,7 @@ pi install git:github.com/KrisGray/pi-agent-stack
 What arrives with it:
 
 - `pi-subagents` — the team runtime: the `subagent` tool, persona loading, review fan-out (core pi has none of this)
-- `@chankov/agent-skills` 0.4.2 — the execution pipeline: `/build`, `/test`, `/review`, `/ship`, `/code-simplify` and its skills
+- `@chankov/agent-skills` 0.4.2 — execution skills (code review, TDD, shipping checklists, code simplification); ships skills, not slash commands
 - `pi-ask-user` — structured interview questions for `/hire-pm`
 - `pi-prompt-template-model` — deterministic pre-steps (the `/hire-pm` catalog feed)
 
@@ -88,7 +88,7 @@ Your first hour in a project:
 2. **The interview.** You confirm-or-correct proposals — never author from a blank page: the project *archetype* (PostgreSQL schema-mapping library, Python data pipeline…), ground truth and its refresh, the fixed foundation task F0, domain boundaries, and a model slate drawn from *your* configured catalog. Nothing is written until you approve the full playback.
 3. **`/hire-pm` writes** `.ai/pm/` — the charter, the seeded interview system, the model pin map — and installs the personas with your approved pins.
 4. **`/pm` opens the working relationship.** It reads the contract, charter and task state, restates its constraints in five lines or fewer, and states which phase it is entering. If work is in flight, it *resumes* — it never re-interviews.
-5. **The loop.** The pm announces the next feature and emits `/spec "<feature>"`; you run it in a fresh session; the pm reviews what came back (runnable Verify lines, labelled claims, requirement traces); it emits `/task` lines; workers implement in strict TDD and stop before committing; `/review` + `/ship` gate the merge behind three isolated reviewers. The pm decides and gates; you execute.
+5. **The loop.** The pm announces the next feature and emits `/spec "<feature>"`; you run it in a fresh session; the pm reviews what came back (runnable Verify lines, labelled claims, requirement traces); it emits `/task` lines; workers implement in strict TDD and stop before committing; `/gate` + `/ship` gate the merge behind three isolated reviewers. The pm decides and gates; you execute.
 
 Re-running `/hire-pm` on a chartered project is an **audit**: it verifies installed pins against the catalog and the charter's policy, flags drift, and re-pins with your approval.
 
@@ -112,7 +112,7 @@ The model catalog lives in `~/.pi/agent/models.json` next to live API keys, and 
 | It does | It never does |
 | --- | --- |
 | Interviews you; writes the PRD and feature graph | Writes or patches code — "just a small fix" included |
-| Emits the exact command line for you to run | Runs `/spec`, `/task`, `/review`, `/ship` itself |
+| Emits the exact command line for you to run | Runs `/spec`, `/task`, `/gate`, `/ship` itself |
 | Reviews every spec: runnable Verify lines, claim labels, requirement traces | Marks a task done — you commit; `/ship` closes |
 | Delegates recon and second opinions; gates behind three reviewers | Accepts secrets in prose, prompts or URLs |
 | Stops at every gate: what completed, what's next, what could go wrong | Re-interviews a project mid-flight — it resumes instead |
