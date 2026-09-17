@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.2.1](https://github.com/KrisGray/pi-agent-stack/compare/v1.2.0...v1.2.1) (2026-09-17)
+
+### Bug Fixes
+
+* **prompts:** bare model id plus thinking field in pm template ([5a32d54](https://github.com/KrisGray/pi-agent-stack/commit/5a32d547c3f3c4dc7bc4246baf731bbe403309e0))
+
 ## [1.2.0](https://github.com/KrisGray/pi-agent-stack/compare/v1.1.0...v1.2.0) (2026-09-17)
 
 ### Features
