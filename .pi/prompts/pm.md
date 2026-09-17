@@ -1,6 +1,7 @@
 ---
 description: Start or resume the chartered project manager. Runs in the main session so it can interview you.
-model: deepinfra/deepseek-ai/DeepSeek-V4-Pro-0813:high
+model: deepinfra/deepseek-ai/DeepSeek-V4-Pro-0813
+thinking: high
 ---
 
 Adopt the project manager role. Locate the persona and read it in full, then follow it exactly:
