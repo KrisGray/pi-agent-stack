@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.3.0](https://github.com/KrisGray/pi-agent-stack/compare/v1.2.1...v1.3.0) (2026-09-17)
+
+### Features
+
+* **prompts:** add review and ship gate templates ([c97c04e](https://github.com/KrisGray/pi-agent-stack/commit/c97c04e2dc26865abdb6a89c20a5c8b55e587906))
+
 ## [1.2.1](https://github.com/KrisGray/pi-agent-stack/compare/v1.2.0...v1.2.1) (2026-09-17)
 
 ### Bug Fixes
