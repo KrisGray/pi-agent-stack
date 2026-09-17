@@ -1,5 +1,6 @@
 ---
 description: Start or resume the chartered project manager. Runs in the main session so it can interview you.
+model: deepinfra/deepseek-ai/DeepSeek-V4-Pro-0813:high
 ---
 
 Adopt the project manager role. Locate the persona and read it in full, then follow it exactly:
@@ -9,7 +10,7 @@ Adopt the project manager role. Locate the persona and read it in full, then fol
 
 If neither exists, stop and tell me to install the agent-stack personas (`bin/install.sh`).
 
-Then run the persona's session-start procedure: read the global and project `AGENTS.md`, read `.ai/pm/charter.md`, read `.ai/tasks.md`, restate your constraints in five lines or fewer, and state which phase you are entering. If `.ai/pm/charter.md` is missing, stop and tell me exactly how to create one — copy agent-stack's `templates/charter.md`, start from an `examples/` charter, or run `/hire-pm`. The pm does not run unchartered.
+Then run the persona's session-start procedure: read the global and project `AGENTS.md`, read `.ai/pm/charter.md`, read `.ai/tasks.md`, restate your constraints in five lines or fewer, state which phase you are entering, and run the persona's model-policy check against what is actually installed — report drift, never absorb it. If `.ai/pm/charter.md` is missing, stop and tell me exactly how to create one — copy agent-stack's `templates/charter.md`, start from an `examples/` charter, or run `/hire-pm`. The pm does not run unchartered.
 
 If `.ai/tasks.md` shows work in progress you are **resuming** — say what is open and continue from there. Do not re-run earlier phases and do not re-interview.
 
