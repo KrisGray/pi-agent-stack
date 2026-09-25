@@ -1,6 +1,7 @@
 ---
 description: Plan a feature as a spec (planning mode, no code). Defaults to a single spec file.
 argument-hint: "<feature description> [--design] [--prd]"
+model: deepinfra/moonshotai/Kimi-K3
 ---
 
 You are in PLANNING mode. In this mode you write specs; you do NOT implement.
