@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.4.0](https://github.com/KrisGray/pi-agent-stack/compare/v1.3.1...v1.4.0) (2026-09-25)
+
+### Features
+
+* **prompts:** pin /spec to Kimi K3 ([f9090e9](https://github.com/KrisGray/pi-agent-stack/commit/f9090e95a0ba23b970d275e761903e27c8d09ecd))
+
 ## [1.3.1](https://github.com/KrisGray/pi-agent-stack/compare/v1.3.0...v1.3.1) (2026-09-17)
 
 ### Bug Fixes
