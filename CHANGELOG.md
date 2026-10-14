@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.4.1](https://github.com/KrisGray/pi-agent-stack/compare/v1.4.0...v1.4.1) (2026-10-14)
+
+### Bug Fixes
+
+* **deps:** bump pi-subagents to 0.78.0 — unblock background children on pi 1.2.0 ([7bb43cb](https://github.com/KrisGray/pi-agent-stack/commit/7bb43cbc97f697fd58026d9b77922b7d9f4ab992))
+
 ## [1.4.0](https://github.com/KrisGray/pi-agent-stack/compare/v1.3.1...v1.4.0) (2026-09-25)
 
 ### Features
