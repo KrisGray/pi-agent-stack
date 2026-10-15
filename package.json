@@ -43,7 +43,7 @@
   },
   "pi": {
     "extensions": [
-      "./node_modules/pi-subagents/index.ts",
+      "./node_modules/pi-subagents/index.js",
       "./node_modules/pi-prompt-template-model/index.ts",
       "./node_modules/pi-ask-user/index.ts"
     ],
