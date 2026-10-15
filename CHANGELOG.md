@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.4.2](https://github.com/KrisGray/pi-agent-stack/compare/v1.4.1...v1.4.2) (2026-10-15)
+
+### Bug Fixes
+
+* **manifest:** point pi-subagents extension at compiled index.js ([04c324a](https://github.com/KrisGray/pi-agent-stack/commit/04c324ab5a2b26bab27b250b9bb3764f659a3bf4))
+
 ## [1.4.1](https://github.com/KrisGray/pi-agent-stack/compare/v1.4.0...v1.4.1) (2026-10-14)
 
 ### Bug Fixes
