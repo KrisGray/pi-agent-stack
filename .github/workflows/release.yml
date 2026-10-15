@@ -20,11 +20,6 @@ jobs:
           fetch-depth: 0
           fetch-tags: true
 
-      - uses: astral-sh/setup-uv@v5
-
-      - name: Test suite
-        run: uv run --with pytest pytest -q tests/
-
       # No registry-url: it exists for token auth (writes a legacy
       # .npmrc with always-auth, which npm >= 11 warns about) and OIDC
       # trusted publishing needs none of it.
@@ -35,6 +30,18 @@ jobs:
       # OIDC trusted publishing requires npm >= 11.5
       - name: Latest npm
         run: npm install -g npm@latest
+
+      # Deps before pytest: tests/test_manifest.py resolves pi.extensions
+      # entries under node_modules/ — the same tree every real consumer
+      # has after pi installs this package. Also feeds semantic-release
+      # below, so no second install step is needed there.
+      - name: Install dependencies
+        run: npm ci
+
+      - uses: astral-sh/setup-uv@v5
+
+      - name: Test suite
+        run: uv run --with pytest pytest -q tests/
 
       # Bootstrap gate: trusted publishing can only be registered once the
       # package exists on npm. Skip green until the seed release is published
@@ -48,12 +55,6 @@ jobs:
             echo "exists=false" >> "$GITHUB_OUTPUT"
             echo "pi-agent-stack is not on npm yet — publish the seed release by hand, then register the trusted publisher. Skipping."
           fi
-
-      # Install the local tree so semantic-release resolves from
-      # node_modules (its changelog/git plugins are devDependencies).
-      - name: Install dependencies
-        if: steps.on_npm.outputs.exists == 'true'
-        run: npm ci
 
       - name: semantic-release
         if: steps.on_npm.outputs.exists == 'true'
